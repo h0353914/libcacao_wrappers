@@ -1,0 +1,49 @@
+cc_prebuilt_library_shared {
+    name: "libcacao_client_real",
+    stem: "libcacao_client_real",
+
+    compile_multilib: "64",
+    arch: {
+        arm64: {
+            srcs: ["prebuilt/lib64/libcacao_client_real.so"],
+        },
+    },
+
+    strip: { none: true },
+    check_elf_files: false,
+    prefer: true,
+    stl: "none",
+
+    vendor: false,
+    vendor_available: false,
+    product_specific: false,
+    product_available: false,
+}
+
+cc_library_shared {
+    name: "libcacao_client",
+    stem: "libcacao_client",
+
+    compile_multilib: "64",
+    srcs: ["src/wrapper.cpp"],
+
+    stl: "c++_shared",
+
+    shared_libs: [
+        "libcacao_client_real",
+        "liblog",
+        "libbinder",
+        "libutils",
+        "libbase",
+    ],
+    header_libs: [
+        "libbase_headers",
+    ],
+
+    ldflags: ["-Wl,--no-as-needed"],
+
+    vendor: false,
+    vendor_available: false,
+    product_specific: false,
+    product_available: false,
+}
