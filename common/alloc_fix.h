@@ -23,16 +23,29 @@ static inline unsigned long fix_size_ul(unsigned long raw) {
 
 template <typename U>
 static inline sp<IMemory> allocMemory_common(U raw_size, const char* who) {
-    const unsigned long kMin = 0x198;
+    const unsigned long kCapsMin = 0x198;
     const unsigned long kMax = 64UL * 1024UL * 1024UL;
 
-    unsigned long size = fix_size_ul((unsigned long)raw_size);
+    unsigned long req = fix_size_ul((unsigned long)raw_size);
+    unsigned long size = req;
+
+    // ✅ 只有「真的需要 0x198 blob」的路徑才保底到 0x198
+    // 你目前 wrapper 內只有 getCaps() 會用到 0x198 的 buf/mem 對齊語意
+    if (who && strcmp(who, "Cacao::getCaps") == 0) {
+        if (size < kCapsMin) size = kCapsMin;
+    }
+
+    ALOGE("WRAP: %s allocMemory_common raw=%lu(0x%lx) fixed=%lu(0x%lx) req=%lu alloc=%lu",
+          (who ? who : "(null)"),
+          (unsigned long)raw_size, (unsigned long)raw_size,
+          req, req,
+          req, size);
+
     sp<IMemory> mem;
-    ALOGE("WRAP-HIT: allocMemory");
     if (size == 0) return mem;
-    if (size < kMin) size = kMin;
+
     if (size > kMax || size >= 0xE0000000UL) {
-        ALOGE("%s allocMemory reject size=%lu raw=%lu", who, size, (unsigned long)raw_size);
+        ALOGE("WRAP: %s reject size=%lu raw=%lu", (who ? who : "(null)"), size, (unsigned long)raw_size);
         return mem;
     }
 
@@ -44,7 +57,10 @@ static inline sp<IMemory> allocMemory_common(U raw_size, const char* who) {
 
     void* p = mem->unsecurePointer();
     if (p) memset(p, 0, (size_t)size);
+
+    ALOGE("WRAP: %s allocMemory_common OK sz=%lu ptr=%p", (who ? who : "(null)"), size, p);
     return mem;
 }
+
 
 } // namespace android
