@@ -1,0 +1,31 @@
+cc_library_shared {
+    name: "libcacao_client",
+    stem: "libcacao_client",
+
+    compile_multilib: "both",
+    srcs: ["src/libcacao_client_wrapper.cpp"],
+
+    include_dirs: [
+    "device/sony/libcacao_wrappers/common",
+    ],
+
+    stl: "c++_shared",
+
+    shared_libs: [
+        "libcacao_client_real",
+        "liblog",
+        "libbinder",
+        "libutils",
+        "libbase",
+    ],
+    header_libs: [
+        "libbase_headers",
+    ],
+
+    ldflags: ["-Wl,--no-as-needed"],
+
+    vendor: false,
+    vendor_available: false,
+    product_specific: false,
+    product_available: false,
+}
