@@ -4,7 +4,7 @@ import subprocess
 
 reboot = True
 adb = "/mnt/f/Android/platform-tools/adb.exe"
-base_path = "~/lineageos/out/target/product/poplar_kddi/symbols/"
+base_path = "/home/h/lineageos/out/target/product/poplar_kddi/symbols/"
 paths = [
     "system/lib64/libcacao_client.so",
     "system/lib64/libcacao_client_real.so",
