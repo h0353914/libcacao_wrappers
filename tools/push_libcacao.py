@@ -12,6 +12,8 @@ paths = [
     "system/lib/libcacao_client_real.so",
     "system/lib/libcacao_service.so",
     "system/lib/libcacao_service_real.so",
+    "system/lib/libimageprocessorjni.so",
+    "system/lib/libimageprocessorjni_real.so",
     "system/lib64/libimageprocessorjni.so",
     "system/lib64/libimageprocessorjni_real.so",
     "system/lib/libcacao_process_ctrl_gateway.so",
