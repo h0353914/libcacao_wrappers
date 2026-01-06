@@ -2,7 +2,7 @@ cc_library_shared {
     name: "libimageprocessorjni",
     stem: "libimageprocessorjni",
 
-    compile_multilib: "64",
+    compile_multilib: "both",
     srcs: ["src/libimageprocessorjni_wrapper.cpp"],
 
     stl: "c++_shared",

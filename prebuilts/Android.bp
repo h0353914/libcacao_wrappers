@@ -49,8 +49,11 @@ cc_prebuilt_library_shared {
     name: "libimageprocessorjni_real",
     stem: "libimageprocessorjni_real",
 
-    compile_multilib: "64",
+    compile_multilib: "both",
     arch: {
+        arm: {
+            srcs: ["lib/libimageprocessorjni_real.so"],
+        },
         arm64: {
             srcs: ["lib64/libimageprocessorjni_real.so"],
         },
