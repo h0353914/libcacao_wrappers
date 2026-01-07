@@ -16,7 +16,9 @@ cc_library_shared {
     shared_libs: [
         "libimageprocessorjni_real",
         "libbinder",
+        "libdl",
         "libgui",
+        "liblog",
         "libutils",
     ],
 
