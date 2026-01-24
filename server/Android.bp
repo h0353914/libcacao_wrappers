@@ -1,0 +1,28 @@
+cc_library_shared {
+    name: "libcacao_service",
+    stem: "libcacao_service",
+
+    compile_multilib: "32",
+    srcs: ["src/libcacao_service_wrapper.cpp"],
+
+    stl: "c++_shared",
+
+    shared_libs: [
+        "libcacao_service_real",
+        "liblog",
+        "libbinder",
+        "libutils",
+        "libbase",
+    ],
+    header_libs: [
+        "libbase_headers",
+        "libcacao_common_headers",
+    ],
+
+    ldflags: ["-Wl,--no-as-needed"],
+
+    vendor: false,
+    vendor_available: false,
+    product_specific: false,
+    product_available: false,
+}

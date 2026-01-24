@@ -1,0 +1,93 @@
+cc_prebuilt_library_shared {
+    name: "libcacao_client_real",
+    stem: "libcacao_client_real",
+
+    compile_multilib: "both",
+    arch: {
+        arm: {
+            srcs: ["lib/libcacao_client_real.so"],
+        },
+        arm64: {
+            srcs: ["lib64/libcacao_client_real.so"],
+        },
+    },
+
+    strip: { none: true },
+    check_elf_files: false,
+    prefer: true,
+    stl: "none",
+
+    vendor: false,
+    vendor_available: false,
+    product_specific: false,
+    product_available: false,
+}
+
+cc_prebuilt_library_shared {
+    name: "libcacao_service_real",
+    stem: "libcacao_service_real",
+
+    compile_multilib: "32",
+    arch: {
+        arm: {
+            srcs: ["lib/libcacao_service_real.so"],
+        },
+    },
+
+    strip: { none: true },
+    check_elf_files: false,
+    prefer: true,
+    stl: "none",
+
+    vendor: false,
+    vendor_available: false,
+    product_specific: false,
+    product_available: false,
+}
+
+cc_prebuilt_library_shared {
+    name: "libimageprocessorjni_real",
+    stem: "libimageprocessorjni_real",
+
+    compile_multilib: "both",
+    arch: {
+        arm: {
+            srcs: ["lib/libimageprocessorjni_real.so"],
+        },
+        arm64: {
+            srcs: ["lib64/libimageprocessorjni_real.so"],
+        },
+    },
+
+    strip: { none: true },
+    check_elf_files: false,
+    prefer: true,
+    stl: "none",
+
+    vendor: false,
+    vendor_available: false,
+    product_specific: false,
+    product_available: false,
+}
+
+cc_prebuilt_library_shared {
+    name: "libcacao_process_ctrl_gateway_real",
+    stem: "libcacao_process_ctrl_gateway_real",
+
+    compile_multilib: "32",
+    arch: {
+        arm: {
+            srcs: ["lib/libcacao_process_ctrl_gateway_real.so"],
+        },
+    },
+
+    strip: { none: true },
+    check_elf_files: false,
+    prefer: true,
+    stl: "none",
+
+    vendor: false,
+    vendor_available: false,
+    product_specific: false,
+    product_available: false,
+}

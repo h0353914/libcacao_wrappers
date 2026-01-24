@@ -1,0 +1,29 @@
+cc_library_shared {
+    name: "libcacao_process_ctrl_gateway",
+    stem: "libcacao_process_ctrl_gateway",
+
+    compile_multilib: "32",
+    srcs: ["src/libcacao_process_ctrl_gateway_wrapper.cpp"],
+
+    stl: "c++_shared",
+
+    header_libs: [
+        "libbinder_headers",
+        "libgui_headers",
+        "libutils_headers",
+    ],
+
+    shared_libs: [
+        "libcacao_process_ctrl_gateway_real",
+        "libbinder",
+        "libgui",
+        "libutils",
+    ],
+
+    ldflags: ["-Wl,--no-as-needed"],
+
+    vendor: false,
+    vendor_available: false,
+    product_specific: false,
+    product_available: false,
+}

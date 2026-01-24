@@ -1,0 +1,31 @@
+cc_library_shared {
+    name: "libimageprocessorjni",
+    stem: "libimageprocessorjni",
+
+    compile_multilib: "both",
+    srcs: ["src/libimageprocessorjni_wrapper.cpp"],
+
+    stl: "c++_shared",
+
+    header_libs: [
+        "libbinder_headers",
+        "libgui_headers",
+        "libutils_headers",
+    ],
+
+    shared_libs: [
+        "libimageprocessorjni_real",
+        "libbinder",
+        "libdl",
+        "libgui",
+        "liblog",
+        "libutils",
+    ],
+
+    ldflags: ["-Wl,--no-as-needed"],
+
+    vendor: false,
+    vendor_available: false,
+    product_specific: false,
+    product_available: false,
+}
